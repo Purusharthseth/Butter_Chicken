@@ -45,8 +45,18 @@ The API is deployed on Railway: [butterchicken-production.up.railway.app](https:
 | File Upload    | `multipart/form-data`  |
 
 
-**📌 View Postman Screenshot**
+### 📌 View Working Screenshot
+- Getting all Chapters
 ![Screenshot](src/public/Screenshot%202025-06-05%20at%203.07.20 PM.png)
+- Getting chapters with filters
 ![Screenshot](src/public/Screenshot%202025-06-05%20at%203.11.04 PM.png)
-![Screenshot](src/public/Screenshot%202025-06-05%20at%203.12.22 PM.png)
+- Posting Screenshots (using JSON file)
 ![Screenshot](src/public/Screenshot%202025-06-05%20at%203.13.52 PM.png)
+- Posting Screenshots (using JSON data object)
+![Screenshot](src/public/Screenshot%202025-06-05%20at%203.12.22 PM.png)
+- Getting chapter by id
+![Screenshot](src/public/Screenshot%202025-06-05%20at%203.18.53 PM.png)
+- Caching in redis
+![Screenshot](src/public/Screenshot%202025-06-05%20at%203.20.08 PM.png)
+- Hiting rate limit using Postman Runner
+![Screenshot](src/public/Screenshot%202025-06-05%20at%203.21.36 PM.png)
