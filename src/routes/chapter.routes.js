@@ -4,10 +4,10 @@ import { upload } from "../middleware/uploadFile.js";
 import getAllChapters from "../controllers/getAllChapters.controller.js";
 import getChapterById from "../controllers/getChapterbyId.controller.js";
 import uploadChapters from "../controllers/uploadChapter.controller.js";
-import redisClient from "../utils/redisClient.js";
 import cacheMiddleware from "../middleware/cacheMiddleware.js";
 import { rateLimit } from 'express-rate-limit';
 import cache from "../utils/cache.js";
+import redisClient from "../utils/redisClient.js";
 const router = express.Router();
 
 class RateLimitStore {
