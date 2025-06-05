@@ -18,6 +18,7 @@ const uploadChapters = async (req, res, next) => {
   try {
     let chapters = [];
     const contentType = req.headers["content-type"] || "";
+
     if (contentType.includes("multipart/form-data")) {
       if (!req.file) throw new ApiError(400, "No file uploaded");
       const raw = req.file.buffer.toString("utf8");
@@ -53,30 +54,28 @@ const uploadChapters = async (req, res, next) => {
       } else {
         try {
           const doc = await Chapter.create(result.data);
-          inserted.push(doc);
+          inserted.push(doc.toObject());  // ✅ Fix: avoid circular refs
         } catch (dbErr) {
           failed.push({
-            chapter: result.data,
+            chapter: result.data,  // result.data is plain JS object, safe
             error: [{ path: "database", message: dbErr.message }],
           });
         }
       }
     }
 
-    return res
-      .status(200)
-      .json(
-        new ApiResponse(
-          200,
-          {
-            uploaded: inserted.length,
-            failed: failed.length,
-            failedChapters: failed,
-            insertedChapters: inserted,
-          },
-          "Upload processed"
-        )
-      );
+    return res.status(200).json(
+      new ApiResponse(
+        200,
+        {
+          uploaded: inserted.length,
+          failed: failed.length,
+          failedChapters: failed,
+          insertedChapters: inserted,
+        },
+        "Upload processed"
+      )
+    );
   } catch (err) {
     next(err);
   }

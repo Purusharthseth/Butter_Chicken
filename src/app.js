@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-
+import apiErrorHandler from './middleware/apiErrorHandler.js';
 const app = express();
 
 
@@ -17,7 +17,9 @@ app.use(cors({
 // Importing routes
 import chapterRoutes from "./routes/chapter.routes.js";
 
+
 // Using routes
 app.use("/api/v1/chapters", chapterRoutes);
 
+app.use(apiErrorHandler);
 export { app };

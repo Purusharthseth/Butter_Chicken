@@ -17,16 +17,11 @@ class RateLimitStore {
 
   async increment(key) {
     try {
-     
-      await this.sendCommand('MULTI');
-      
-      await this.sendCommand('INCR', key);
-      await this.sendCommand('EXPIRE', key, '60'); 
-      
-     
-      const results = await this.sendCommand('EXEC');
-      
-     
+     const results = await redisClient.multi()
+        .incr(key)
+        .expire(key, 60)
+        .exec();
+
       const totalHits = results[0];
       
       return { 
@@ -92,24 +87,25 @@ router.get("/", cacheMiddleware, async (req, res, next) => {
   }
 });
 
-
 router.get("/:id", getChapterById);    
-router.post("/", (req, res, next) => {
-  req.user = { isAdmin: true }; 
-  next();
-}, adminAuth, upload.single("file"), async (req, res, next) => {
-  try {
-    const result = await uploadChapters(req, res);
-   
-    const keys = await redisClient.keys('chapters:*');
-    if (keys.length > 0) {
-      await redisClient.del(keys);
+
+router.post(
+  "/",
+  (req, res, next) => {
+    req.user = { isAdmin: true };
+    next();
+  },
+  adminAuth,
+  upload.single("file"),
+  async (req, res, next) => {
+    try {
+      await uploadChapters(req, res);
+      await redisClient.flushDb();
+      console.log("All Redis keys flushed");
+    } catch (error) {
+      next(error);
     }
-    
-    res.json(result);
-  } catch (error) {
-    next(error);
   }
-});
+);
 
 export default router;
