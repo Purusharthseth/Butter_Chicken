@@ -46,7 +46,7 @@ The API is deployed on Railway: [butterchicken-production.up.railway.app](https:
 
 
 **📌 View Postman Screenshot**
-(src/public/Screenshot%202025-06-05%20at%203.07.20 PM.png)
-[Screenshot](src/public/Screenshot%202025-06-05%20at%203.11.04 PM.png)
-[Screenshot](src/public/Screenshot%202025-06-05%20at%203.12.22 PM.png)
-[Screenshot](src/public/Screenshot%202025-06-05%20at%203.13.52 PM.png)
+![Screenshot](src/public/Screenshot%202025-06-05%20at%203.07.20 PM.png)
+![Screenshot](src/public/Screenshot%202025-06-05%20at%203.11.04 PM.png)
+![Screenshot](src/public/Screenshot%202025-06-05%20at%203.12.22 PM.png)
+![Screenshot](src/public/Screenshot%202025-06-05%20at%203.13.52 PM.png)
