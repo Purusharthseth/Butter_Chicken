@@ -37,7 +37,7 @@ The API is deployed on Railway: [butterchicken-production.up.railway.app](https:
 | GET    | /api/v1/chapters/:id   | Get single chapter               | –                      |
 | POST   | /api/v1/chapters       | Upload chapters (Admin-only)     | JSON or File Upload    |
 
-### 📝 POST /api/v1/chapters Input Types
+#### 📝 POST /api/v1/chapters Input Types
 
 | Input Type     | Content-Type           |
 |----------------|------------------------|
@@ -45,7 +45,7 @@ The API is deployed on Railway: [butterchicken-production.up.railway.app](https:
 | File Upload    | `multipart/form-data`  |
 
 
-### 📌 View Working Screenshot
+## 📌 View Working Screenshot
 - Getting all Chapters
 ![Screenshot](src/public/Screenshot%202025-06-05%20at%203.07.20 PM.png)
 - Getting chapters with filters
